@@ -10,8 +10,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 
 const {mongoose} = require('./config/database');
-const webRouter = require('./routes/web');
-const apiRouter = require('./routes/api');
+const router = require('./routes/index');
 
 const corsConfig = require('./config/config').cors;
 const errorHandler = require('./config/config').error;
@@ -41,8 +40,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(corsConfig);
 
-app.use('/', webRouter);
-app.use('/api', apiRouter);
+app.use('/', router);
 
 app.use(errorHandler);
 
