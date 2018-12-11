@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var UserController = require('../../controllers/UserController');
 
-router.get('/', function(req, res, next) {
-    res.send("<h1>Express Auth API</h1>");
-});
+router.post('/', UserController.login);
+router.post('/register', UserController.register);
 
 module.exports = router;

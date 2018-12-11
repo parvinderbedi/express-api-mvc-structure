@@ -7,6 +7,12 @@ const {secret} = require('../config/config');
 
 
 var UserSchema = new mongoose.Schema({
+    firstName: {
+        type: String
+    },
+    lastName:{
+        type: String
+    },
     email: {
         type: String,
         required: true,
@@ -39,7 +45,7 @@ UserSchema.methods.toJSON = function () {
     var user = this;
     var userObject = user.toObject();
 
-    return _.pick(userObject, ['_id', 'email']);
+    return _.pick(userObject, ['_id', 'firstName', 'lastName', 'email']);
 };
 
 UserSchema.methods.generateAuthToken = function () {
